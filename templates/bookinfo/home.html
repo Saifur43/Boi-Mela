@@ -14,27 +14,34 @@
         </div>
     </section>
 
-
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
 
-                <div class="col-sm-4 text-center">
-                    <div class="card" style="width: 20rem; height:21rem;">
-                      <img class="card-img-top" src="https://image.flaticon.com/icons/svg/166/166088.svg" 
-                      alt="Card image cap" width="200px" height="200px">
-                      <div class="card-block">
-                            <h4 class="card-title">Book Name</h4>
-                            <p class="card-text">Book Writer</p>
-                            <a href="" class="btn btn-primary">Add To Cart</a>
-                      </div>
+                {% for book in books %}
+                <div class="col-md-4 ">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap">
+                        <div class="card-body ">
+                            <p class="card-text">{{ book.title }}</p>
+                            {% for author in book.authors.all  %}
+                            <p class="card-text">{{ author }}</p>
+                            {% endfor %}
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{% url 'details' book.id book.slug  %}" type="button" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="" type="button" class="btn btn-sm btn-outline-primary">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <br/>
                 </div>
+                {% endfor %}
 
             </div>
         </div>
     </div>
 </main>
+
 
 {% endblock %}
