@@ -12,3 +12,11 @@ class BookDetailView(DetailView):
     model = Book
     pk_url_kwarg = "id"
     template_name = 'bookinfo/details.html'
+
+class CategoryListView(ListView):
+    model = Book
+    template_name = 'bookinfo/category.html'
+    context_object_name = 'books'
+    def get_queryset(self):
+        if self.kwargs['c_slug']:
+            return self.model.objects.filter(categories__c_slug=self.kwargs['c_slug'])
