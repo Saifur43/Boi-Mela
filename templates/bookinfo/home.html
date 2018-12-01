@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 
+
+<!-- {% block nav %}
+
+    {% for category in categories %}
+        <a class="dropdown-item" href="#">{{category}}</a>
+    {% endfor %}
+     
+{% endblock %} -->
+    
+
 {% block content %}
 
 <main role="main">
@@ -32,6 +42,7 @@
                                     <a href="{% url 'details' book.id book.slug  %}" type="button" class="btn btn-sm btn-outline-primary">View</a>
                                     <a href="" type="button" class="btn btn-sm btn-outline-primary">Add to Cart</a>
                                 </div>
+                                <small class="text-muted">TK. {{ book.price }}</small>
                             </div>
                         </div>
                     </div>
